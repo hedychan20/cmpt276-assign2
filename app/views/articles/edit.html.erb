@@ -1,0 +1,45 @@
+<h1>Editing Profile</h1>
+ 
+<%= form_for :article, url: article_path(@article), method: :patch do |f| %>
+ 
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :Weight %><br>
+    <%= f.text_area :weight %>
+  </p>
+  
+  <p>
+    <%= f.label :Height %><br>
+    <%= f.text_area :height %>
+  </p>
+  
+  <p>
+    <%= f.label :colour %><br>
+    <%= f.text_area :colour %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', articles_path %>
